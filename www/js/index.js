@@ -48,6 +48,37 @@ var app = {
     }
 };
 
+// Function = VIBRATION
 function shake(){
     navigator.vibrate(3000);
 }
+
+// Function = CAMERA
+function pics(){
+    navigator.camera.getPicture(cameraCallback, onError);
+}
+function onError(){
+    console.log(error);
+
+}
+
+function cameraCallback(imageData){
+    var image = document.getElementById('myImage');
+    //take a photo using mobile camera
+    image.src = imageData;
+    
+    //take a photo using web browser
+    //image.src = "data:image/jpeg;base64," + imageData;
+}
+
+// FUNCTION = GEO-LOCATION
+
+function getLocation(){
+    navigator.geolocation.getCurrentPosition(geoCallback, onError);
+}
+
+function geoCallback(position){
+    cosole.log(position);
+}
+
+
