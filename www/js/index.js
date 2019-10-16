@@ -48,6 +48,86 @@ var app = {
     }
 };
 
+// Function = VIBRATION
 function shake(){
     navigator.vibrate(3000);
 }
+
+// Function = CAMERA
+function pics(){
+    navigator.camera.getPicture(cameraCallback, onError);
+}
+function onError(){
+    console.log(Error);
+
+}
+
+function cameraCallback(imageData){
+    var image = document.getElementById('myImage');
+    //take a photo using mobile camera
+    image.src = imageData;
+    
+    //take a photo using web browser
+    //image.src = "data:image/jpeg;base64," + imageData;
+}
+
+// FUNCTION = GEO-LOCATION
+
+function getLocation(){
+    navigator.geolocation.getCurrentPosition(geoCallback, onError);
+}
+
+function geoCallback(position){
+    cosole.log(position.coords.latitude);
+
+    var lat = position.coords.latitude;
+    var long = position.coords.longitude;
+
+    var textToDisplay = "Latitude: " + lat + " Longitude: " + long;
+    document.getElementById('pos').innerHTML = textToDisplay;
+
+    updatetMap(lat, long);
+}
+
+function initMap() {
+    var cct = {lat: 53.346, lng: -6.2588};
+    var map = new google.maps.Map(document.getElementById('map'), { zoom: 4,
+        center: cct
+      }
+    );
+    var marker = new google.maps.Marker({
+        position: cct,
+        map: map
+    });    
+}
+
+function updatetMap(latitude, longitude) {
+    var cct = {lat: latitude, lng: longitude};
+    var map = new google.maps.Map(document.getElementById('map'), { zoom: 4,
+        center: location
+      }
+    );
+    var marker = new google.maps.Marker({
+        position: location,
+        map: map
+    });    
+}
+
+function openCageApi() {
+    var http = new XMLHttpRequest();
+    const url = 'https://api.opencagedata.com/geocode/v1/json?q=53.346+-6.2588&key=f576d3fbe1d84392b909860a541915d0';
+    http.open("GET", url);
+    http.send();
+    
+    http.onreadystatechange = (e) => {
+        var response = http.responseText;
+        var responseJSON = JSON.parse(response);
+        console.log(response);
+        console.log(responseJSON);
+
+        var country = responseJSON.results[0].components.country;
+        document.getElementById('pos').innerHTML = country;
+    }
+}
+
+
