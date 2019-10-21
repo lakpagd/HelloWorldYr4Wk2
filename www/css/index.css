@@ -49,8 +49,8 @@ body {
 .app {
     background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
     position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:50%;
+    left:25%;
+    top:10%;
     height:50px;                   /* text area height */
     width:225px;                   /* text area width */
     text-align:center;
@@ -68,6 +68,11 @@ body {
                                       /* offset horizontal: half of image width and text area width */
     }
 }
+
+.body1 {
+    margin: 200px 300px 700px 150px ;
+}
+
 
 h1 {
     font-size:24px;
@@ -117,4 +122,17 @@ h1 {
 #map {
     height: 250px;
     width: 250px;
+}
+
+table {
+    border-collapse: collapse;
+}
+  
+table, td, th {
+    padding: 10px;
+    border: 3px solid black;
+}
+
+div{
+    margin: 5px;
 }

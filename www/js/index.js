@@ -130,4 +130,33 @@ function openCageApi() {
     }
 }
 
+function newsApi(){
+    var http = new XMLHttpRequest();
+    const url = 'https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=cfa755e72a1c43b5b18566990622ffed';
+    http.open("GET", url);
+    http.send();
+
+    http.onreadystatechange = (e) => {
+        var response = http.responseText;
+        var responseJSON = JSON.parse(response);
+        console.log(response)
+        console.log(responseJSON);
+
+       // var newss = responseJSON.articles[1].title;
+       // console.log(articles);
+       //document.getElementById('newsPos').innerHTML = articles;
+        
+        var news = "<table>";
+        for (var i = 0; i < 10; i++){
+            news = news + "<tr><td>";
+            news += responseJSON.articles[i].title;
+            news += "</td><td>" + responseJSON.articles[i].content + "</td></tr>"
+        }
+        news += "</table>"
+
+        document.getElementById('newsPos').innerHTML = news;
+    
+    }
+}
+
 
