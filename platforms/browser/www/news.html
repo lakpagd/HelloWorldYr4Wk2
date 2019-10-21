@@ -6,30 +6,33 @@
     </head>
 
     <body>
-
-        <div class="app">
-            <h1> News </h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+        <div id="wrapper">
+            <div class="app">
+                <h1> News </h1>
+                <div id="deviceready" class="blink">
+                    <p class="event listening">Connecting to Device</p>
+                    <p class="event received">Device is Ready</p>
+                </div>
             </div>
+            
+            <div class="body1">
+            
+                <div id="button">
+                    <a href="index.html">
+                        <button id="indexPage"> Go Home </button>
+                    </a>
+                    <button id="newsApi" onclick="newsApi()"> Click for News </button>
+            
+                </div>
+                <div id="newsPos" > Your News is Here </div>
+
+                                
+            </div>
+
+            
         </div>
 
-        <div class="body1">
-
-            <div id="button">
-
-                <a href="index.html">
-                    <button id="indexPage"> Go Home </button>
-                </a>
-            <button id="newsApi" onclick="newsApi()"> Click for News </button>
-
-            </div>
-            <div>
-                    <div id="newsPos" > Your News is Here </div>
-            </div>
                     
-        </div>            
          
        
         <script type="text/javascript" src="cordova.js"></script>
